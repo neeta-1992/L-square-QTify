@@ -9,7 +9,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import SectionCard from "../SectionCard/SectionCard";
 export default function Section({ label, albums, isSongs, genres, genrevalue, handleGenreChange }) {
-    const [expanded, setExpanded] = useState(true);
+    const [expanded, setExpanded] = useState(false);
     const handleExpandClick = () => {
         setExpanded(!expanded);
     }
