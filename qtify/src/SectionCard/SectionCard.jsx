@@ -6,15 +6,14 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import styles from "./SectionCard.module.css";
 
-export default function SectionCard({ album }) {
+export default function SectionCard({ title, image, chipLabel }) {
     return (
         <>
-            <Card key={album.id}>
+            <Card>
                 <CardMedia
                     component="img"
                     height="170"
-                    image={album.image}
-                    alt={album.title}
+                    image={image}
                 />
                 <CardContent sx={{
                     padding: "10px",
@@ -27,7 +26,7 @@ export default function SectionCard({ album }) {
                             fontWeight: "400",
                             fontSize: "10px",
                             padding: "4px 8px",
-                        }} label={`${album.follows} Follows`} />
+                        }} label={chipLabel} />
                     </Stack>
                 </CardContent>
             </Card >
@@ -38,7 +37,7 @@ export default function SectionCard({ album }) {
                 marginTop: "10px",
                 textAlign: "left",
             }}>
-                {album.title}
+                {title}
             </Typography>
         </>
     );

@@ -1,12 +1,13 @@
 import { useState } from 'react';
-import SectionCard from "../SectionCard/SectionCard";
 import styles from "./Section.module.css";
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-
-export default function Section({ label, albums }) {
+import Carousel from '../Carousel/Carousel';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+export default function Section({ label, albums, isSongs, genres, genrevalue, handleGenreChange }) {
     const [expanded, setExpanded] = useState(true);
     const handleExpandClick = () => {
         setExpanded(!expanded);
@@ -32,16 +33,37 @@ export default function Section({ label, albums }) {
                     </Button>
                 </Grid>
             </Box>
+            {
+                isSongs &&
+                <Box sx={{ width: '100%' }}>
+                    <Tabs
+                        value={genrevalue}
+                        onChange={handleGenreChange}
+                        textColor="secondary"
+                        indicatorColor="secondary"
+                        aria-label="secondary tabs example"
+                        sx={{
+                            '& .MuiTabs-indicator': {
+                                backgroundColor: "var(--color-primary) !important",
+                            },
+                            '& .Mui-selected': {
+                                color: "var(--color-primary) !important",
+                            },
+                        }}
+                    >
+                        <Tab value="all" label="All" sx={{ color: "var(--color-white)" }} />
+                        {genres.map((genre) => (
+                            <Tab value={genre.key} label={genre.label} sx={{ color: "var(--color-white)" }} />
+                        ))}
+                    </Tabs>
+                </Box>
+            }
             <Box sx={{
                 flexGrow: 1,
                 display: expanded ? 'block' : 'none',
             }}>
                 <Grid container spacing={3}>
-                    {albums.map((album) => (
-                        <Grid key={album.id} size={2}>
-                            <SectionCard album={album} />
-                        </Grid>
-                    ))}
+                    <Carousel albums={albums} isSongs={isSongs} />
                 </Grid>
             </Box>
         </div>
