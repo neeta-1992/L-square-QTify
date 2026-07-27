@@ -1,14 +1,12 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-import Grid from '@mui/material/Grid';
 import SectionCard from "../SectionCard/SectionCard";
 import "./Carousel.css";
 // Import Swiper styles
 import "swiper/css";
 import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import { Navigation, Pagination, Mousewheel, Keyboard } from 'swiper/modules';
+import { Navigation, Mousewheel, Keyboard } from 'swiper/modules';
 
 export default function Carousel({ albums, isSongs }) {
     return (

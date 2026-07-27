@@ -38,10 +38,10 @@ function App() {
   }, []);
   const handleGenreChange = (event, newValue) => {
     setGenreValue(newValue)
-    if (newValue == 'all') {
+    if (newValue === 'all') {
       setSongs(allSongs);
     } else {
-      const filteredSongs = allSongs.filter(song => song.genre.key == newValue);
+      const filteredSongs = allSongs.filter(song => song.genre.key === newValue);
       setSongs(filteredSongs);
     }
 
