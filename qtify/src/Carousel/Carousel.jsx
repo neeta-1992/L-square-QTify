@@ -11,7 +11,7 @@ import { Navigation, Mousewheel, Keyboard } from 'swiper/modules';
 export default function Carousel({ albums, isSongs }) {
     return (
         <>
-            <Swiper slidesPerView={7} spaceBetween={30} cssMode={true}
+            <Swiper slidesPerView={7} spaceBetween={30} cssMode={true} slidesPerGroup={4}
                 navigation={true}
                 mousewheel={true}
                 keyboard={true}
