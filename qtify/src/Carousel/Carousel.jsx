@@ -31,7 +31,7 @@ export default function Carousel({ albums, isSongs }) {
                 }}>
                 {albums.map((album) => (
                     <SwiperSlide key={album.id}>
-                        {isSongs ? <SectionCard title={album.title} image={album.image} chipLabel={`${album.likes} Likes`} /> : <SectionCard title={album.name} image={album.image} chipLabel={`${album.follows} Follows`} />}
+                        {isSongs ? <SectionCard title={album.title} image={album.image} chipLabel={`${album.likes} Likes`} /> : <SectionCard title={album.title} image={album.image} chipLabel={`${album.follows} Follows`} />}
                     </SwiperSlide>
                 ))}
             </Swiper>

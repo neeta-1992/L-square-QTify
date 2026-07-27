@@ -70,7 +70,7 @@ export default function Section({ label, albums, isSongs, genres, genrevalue, ha
                     </Grid> : (expanded ? <Grid container spacing={3}>
                         {albums.map((album) => (
                             <Grid key={album.id} size={2}>
-                                <SectionCard title={album.name} image={album.image} chipLabel={`${album.follows} Follows`} />
+                                <SectionCard title={album.title} image={album.image} chipLabel={`${album.follows} Follows`} />
                             </Grid>
                         ))}
                     </Grid> :
