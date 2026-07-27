@@ -29,9 +29,11 @@ export default function Section({ label, albums, isSongs, genres, genrevalue, ha
                     }}>
                         {label}
                     </Typography>
-                    <Button onClick={handleExpandClick} variant="text" sx={{ color: "var(--color-primary)", textTransform: "none", fontWeight: "600", fontSize: "20px" }}>
-                        {expanded ? 'Collapse' : 'Show all'}
-                    </Button>
+                    {
+                        !isSongs && <Button onClick={handleExpandClick} variant="text" sx={{ color: "var(--color-primary)", textTransform: "none", fontWeight: "600", fontSize: "20px" }}>
+                            {expanded ? 'Collapse' : 'Show all'}
+                        </Button>
+                    }
                 </Grid>
             </Box>
             {
@@ -62,16 +64,21 @@ export default function Section({ label, albums, isSongs, genres, genrevalue, ha
             <Box sx={{
                 flexGrow: 1
             }}>
-                {expanded ? <Grid container spacing={3}>
-                    {albums.map((album) => (
-                        <Grid key={album.id} size={2}>
-                            <SectionCard title={album.name} image={album.image} chipLabel={`${album.follows} Follows`} />
-                        </Grid>
-                    ))}
-                </Grid> :
-                    <Grid container spacing={3}>
+                {
+                    isSongs ? <Grid container spacing={3}>
                         <Carousel albums={albums} isSongs={isSongs} />
-                    </Grid>}
+                    </Grid> : (expanded ? <Grid container spacing={3}>
+                        {albums.map((album) => (
+                            <Grid key={album.id} size={2}>
+                                <SectionCard title={album.name} image={album.image} chipLabel={`${album.follows} Follows`} />
+                            </Grid>
+                        ))}
+                    </Grid> :
+                        <Grid container spacing={3}>
+                            <Carousel albums={albums} isSongs={isSongs} />
+                        </Grid>)
+                }
+
 
             </Box>
         </div>
