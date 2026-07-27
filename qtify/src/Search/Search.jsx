@@ -17,7 +17,7 @@ function Search({ placeholder = "Search a song of your choice" }) {
     };
 
     return (
-        <div style={{ position: "relative" }}>
+        <div className={styles.maindiv}>
             <form className={styles.wrapper} onSubmit={onSubmit}>
                 <input
                     name="album"
