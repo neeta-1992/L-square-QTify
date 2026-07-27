@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import Carousel from '../Carousel/Carousel';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
+import SectionCard from "../SectionCard/SectionCard";
 export default function Section({ label, albums, isSongs, genres, genrevalue, handleGenreChange }) {
     const [expanded, setExpanded] = useState(true);
     const handleExpandClick = () => {
@@ -59,12 +60,19 @@ export default function Section({ label, albums, isSongs, genres, genrevalue, ha
                 </Box>
             }
             <Box sx={{
-                flexGrow: 1,
-                display: expanded ? 'block' : 'none',
+                flexGrow: 1
             }}>
-                <Grid container spacing={3}>
-                    <Carousel albums={albums} isSongs={isSongs} />
-                </Grid>
+                {expanded ? <Grid container spacing={3}>
+                    {albums.map((album) => (
+                        <Grid key={album.id} size={2}>
+                            <SectionCard title={album.name} image={album.image} chipLabel={`${album.follows} Follows`} />
+                        </Grid>
+                    ))}
+                </Grid> :
+                    <Grid container spacing={3}>
+                        <Carousel albums={albums} isSongs={isSongs} />
+                    </Grid>}
+
             </Box>
         </div>
     );

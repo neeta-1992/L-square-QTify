@@ -15,7 +15,7 @@ const theme = createTheme({
 });
 
 function App() {
-  const [albums, setAlbums] = useState([]);
+  const [topAlbums, setTopAlbums] = useState([]);
   const [newAlbums, setNewAlbums] = useState([]);
   const [songs, setSongs] = useState([]);
   const [allSongs, setAllSongs] = useState([]);
@@ -23,7 +23,7 @@ function App() {
   const [genrevalue, setGenreValue] = useState('all');
   useEffect(() => {
     axios.get('https://qtify-backend.labs.crio.do/albums/top').then((response) => {
-      setAlbums(response.data);
+      setTopAlbums(response.data);
     })
     axios.get('https://qtify-backend.labs.crio.do/albums/new').then((response) => {
       setNewAlbums(response.data);
@@ -52,7 +52,7 @@ function App() {
         <div className="App">
           <Navbar />
           <Hero />
-          <Section label="Top Albums" albums={albums} />
+          <Section label="Top Albums" albums={topAlbums} />
           <Section label="New Albums" albums={newAlbums} />
           <Section label="Songs" albums={songs} isSongs={true} genres={genres} genrevalue={genrevalue} handleGenreChange={handleGenreChange} />
         </div>
