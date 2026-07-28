@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./Faq.module.css";
 import Accordion from '@mui/material/Accordion';
-import AccordionActions from '@mui/material/AccordionActions';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Grid from '@mui/material/Grid';
